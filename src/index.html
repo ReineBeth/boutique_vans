@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+		/>
+		<link rel="stylesheet" href="./assets/styles/styles.css" />
+		<title>Boutique Vans</title>
+	</head>
+	<body id="top app">
+		<header class="sticky-top">
+			<nav
+				class="navbar navbar-light bg-light border-bottom border-danger container-fluid py-3 sticky-top navbar-expand-md w-100 d-md-flex flex-column"
+			>
+				<div class="d-flex justify-content-between w-100 m-2">
+					<div id="icone_logo">
+						<button
+							class="navbar-toggler mx-1"
+							type="button"
+							data-bs-toggle="collapse"
+							aria-controls="menuBurger"
+							aria-expanded="false"
+							aria-label="Toggle navigation"
+							data-bs-target="#menuBurger"
+						>
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<a href="navbar-brand">
+							<!-- logo -->
+							<img
+								height="50"
+								src="./assets/images/vans_logo_rouge-noir.png"
+								alt="Logo Vans"
+							/>
+						</a>
+					</div>
+					<!-- ICONE LOUPE ET PANIER -->
+					<div id="icones_loupe-panier" class="d-flex">
+						<form class="input-group m-1 d-none d-sm-flex">
+							<input
+								class="form-control d-sm-block"
+								type="search"
+								placeholder="Rechercher"
+							/>
+							<button
+								class="btn btn-outline-dark"
+								type="submit"
+								aria-label="recherchr"
+							>
+								<!-- loupe -->
+								<i class="bi bi-search h5"></i>
+							</button>
+						</form>
+						<a
+							class="btn btn-light m-1 position-relative"
+							href="#contenu_panier"
+							role="button"
+							aria-controls="contenu_panier"
+							aria-label="Voir contenu panier"
+							data-bs-toggle="offcanvas"
+						>
+							<!-- panier -->
+							<i class="bi bi-basket h3"></i>
+							<span
+								id="panier_badge"
+								class="position-absolute top-0 end-0 badge bg-danger rounded-circle"
+							></span>
+						</a>
+					</div>
+				</div>
+				<form class="input-group d-flex w-100 mx-1 mt-2 d-sm-none">
+					<input
+						class="form-control d-sm-block"
+						type="search"
+						placeholder="Rechercher"
+					/>
+					<button
+						class="btn btn-outline-dark"
+						type="submit"
+						aria-label="rechercher"
+					>
+						<!-- loupe2  -->
+						<i class="bi bi-search h5"></i>
+					</button>
+				</form>
+				<div
+					id="menuBurger"
+					class="navbar-collapse collapse w-100 navbar-md-expand mt-3"
+				>
+					<ul
+						class="navbar-nav d-md-flex justify-content-around w-100"
+					>
+						<li class="nav-item">
+							<a class="nav-link link-danger h6" href="#">
+								Hommes
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link h6" href="#"> Femmes </a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link h6" href="#"> Enfants </a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link h6" href="#"> Personnalisé </a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+
+		<!-- OFFCANVAS -->
+
+		<div class="offcanvas offcanvas-end" tabindex="-1" id="contenu_panier">
+			<div class="offcanvas-header">
+				<h2
+					class="offcanvas-title text-danger"
+					id="contenu_panier_titre"
+				>
+					Mon panier : <span id="nbr_items">0</span> items
+				</h2>
+				<button
+					type="button"
+					class="btn-close text-reset"
+					aria-label="Fermer panier"
+					data-bs-dismiss="offcanvas"
+				></button>
+			</div>
+			<div id="contenu_panier_body" class="offcanvas-body text-center">
+				<table
+					id="tableau_panier"
+					class="border-top border-bottom border-danger my-4"
+				>
+					<thead class="border-bottom border-secondary">
+						<tr>
+							<th>Image</th>
+							<th>Titre</th>
+							<th>Modèle</th>
+							<th>Prix</th>
+						</tr>
+					</thead>
+					<tbody id="tbody"></tbody>
+				</table>
+				<p class="text-uppercase">
+					Total&nbsp;<span id="total_facture" class="fw-bold"
+						>$0</span
+					>
+				</p>
+				<button
+					id="btn_offcanvas"
+					class="btn btn-danger px-5"
+					type="button"
+					aria-label="Aller vers étape 2"
+				>
+					Étape suivante
+				</button>
+			</div>
+		</div>
+
+		<main
+			class="container-fluid ms-0 d-flex flex-wrap justify-content-center p-0"
+		>
+			<!-- IMAGE ET TITRE -->
+			<figure class="d-md-flex overflow-hidden w-100">
+				<img
+					class="img-fluid order-2"
+					src="./assets/images/vans_horror.webp"
+					alt="Vans collection Horreur"
+				/>
+				<figcaption
+					class="container-fluid bg-dark p-3 text-center text-light order-1 text-md-start d-md-flex flex-md-column justify-content-center"
+				>
+					<h1 class="p-md-4">Vans X Horror</h1>
+					<p class="p-md-4">
+						Une collection inspirée des films d'horreur classique!
+					</p>
+				</figcaption>
+			</figure>
+			<!-- EN HAUT DES CARTES/LISTE -->
+			<div
+				class="container d-flex justify-content-between border-bottom border-danger m-2 py-2"
+			>
+				<div class="fs-2 d-flex">
+					<h2>Vans X Horror</h2>
+					<i class="bi bi-chevron-down ms-2"></i>
+				</div>
+				<div
+					class="btn-group d-block d-lg-flex"
+					role="group"
+					aria-label="format affichage"
+				>
+					<!-- LISTE -->
+					<input
+						type="radio"
+						class="btn-check"
+						name="btnradio"
+						id="btn_liste"
+					/>
+					<label
+						class="btn btn-outline-secondary d-lg-flex justify-content-between align-items-center"
+						for="btn_liste"
+						aria-label="selectionner liste"
+					>
+						<span class="me-2 d-none d-lg-block">Liste</span
+						><i class="bi bi-list-ul"></i>
+					</label>
+					<!-- MOSAIQUE -->
+					<input
+						type="radio"
+						class="btn-check"
+						name="btnradio"
+						id="btn_mosaique"
+						checked
+					/>
+					<label
+						class="btn btn-outline-secondary d-lg-flex justify-content-between align-items-center"
+						for="btn_mosaique"
+						aria-label="selectionner mosaique"
+					>
+						<span class="me-2 d-none d-lg-block">Mosaique</span
+						><i class="bi bi-grid"></i>
+					</label>
+				</div>
+			</div>
+			<!-- LES CARTES -->
+			<div id="mosaique" class="container p-0 m-0 justify-content-center">
+				<div class="row m-3">
+					<div class="col-sm-6 col-md-4">
+						<div class="card mb-5 border-secondary">
+							<img
+								class="card-img-top p-2"
+								src="./assets/images/vans_beetlejuice_aut.webp"
+								alt="Soulier vans thématique beetlejuice"
+							/>
+							<div class="card-body text-start">
+								<h3 class="card-title">Beetlejuice</h3>
+								<p class="card-text">Old skool</p>
+								<p class="fw-bold">$160.00</p>
+								<div
+									class="d-flex justify-content-around d-sm-block d-lg-flex"
+								>
+									<button
+										class="btn btn-outline-secondary col-5 col-sm-12 mx-sm-auto mb-sm-2 col-lg-5 mb-lg-0"
+										type="button"
+										aria-label="Ouvrir modale Beetlejuice"
+										data-bs-toggle="modal"
+										data-bs-target="#modale_beetlejuice"
+									>
+										En savoir plus
+									</button>
+									<button
+										class="btn_ajouter_panier btn btn-danger col-5 col-sm-12 mx-sm-auto col-lg-5 ms-lg-0"
+										type="button"
+										data-titre="Beetlejuice"
+										aria-label="Ajouter au panier"
+										data-modele="Old Skool"
+										data-prix="160.00"
+										data-img="./assets/images/vans_beetlejuice_aut.webp"
+									>
+										Ajouter au panier
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-4">
+						<div class="card mb-5 border-secondary">
+							<img
+								class="card-img-top p-2"
+								src="./assets/images/vans_casquette.webp"
+								alt="Casquette thématique it"
+							/>
+							<div class="card-body text-start">
+								<h3 class="card-title">It Casquette</h3>
+								<p class="card-text">Jockey Hat</p>
+								<p class="fw-bold">$40.00</p>
+								<div
+									class="d-flex justify-content-around d-sm-block d-lg-flex"
+								>
+									<button
+										class="btn btn-outline-secondary col-5 col-sm-12 mx-sm-auto mb-sm-2 col-lg-5 mb-lg-0"
+										type="button"
+										aria-label="Ouvrir modale casquette it"
+										data-bs-toggle="modal"
+										data-bs-target="#modale_casquette"
+									>
+										En savoir plus
+									</button>
+									<button
+										class="btn_ajouter_panier btn btn-danger col-5 col-sm-12 mx-sm-auto col-lg-5 ms-lg-0"
+										type="button"
+										aria-label="Ajouter au panier"
+										data-titre="It"
+										data-modele="Jockey Hat"
+										data-prix="40.00"
+										data-img="./assets/images/vans_casquette.webp"
+									>
+										Ajouter au panier
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-4">
+						<div class="card mb-5 border-secondary">
+							<img
+								class="card-img-top p-2"
+								src="./assets/images/vans_gremlin.webp"
+								alt="Soulier vans thématique Gremlins"
+							/>
+							<div class="card-body text-start">
+								<h3 class="card-title">Gremlins</h3>
+								<p class="card-text">Slip-on</p>
+								<p class="fw-bold">$120.00</p>
+								<div
+									class="d-flex justify-content-around d-sm-block d-lg-flex"
+								>
+									<button
+										class="btn btn-outline-secondary col-5 col-sm-12 mx-sm-auto mb-sm-2 col-lg-5 mb-lg-0"
+										type="button"
+										aria-label="Ouvrir modale Gremlins"
+										data-bs-toggle="modal"
+										data-bs-target="#modale_gremlins"
+									>
+										En savoir plus
+									</button>
+									<button
+										type="button"
+										class="btn_ajouter_panier btn btn-danger col-5 col-sm-12 mx-sm-auto col-lg-5 ms-lg-0"
+										aria-label="Ajouter au panier"
+										data-titre="Gremlins"
+										data-modele="Slip-on"
+										data-prix="120.00"
+										data-img="./assets/images/vans_gremlin.webp"
+									>
+										Ajouter au panier
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-4">
+						<div class="card mb-5 border-secondary">
+							<img
+								class="card-img-top p-2"
+								src="./assets/images/vans_lost-boys.webp"
+								alt="Soulier vans thématique Lost boys"
+							/>
+							<div class="card-body text-start">
+								<h3 class="card-title">The Lost Boys</h3>
+								<p class="card-text">Style 47 creeper</p>
+								<p class="fw-bold">$120.00</p>
+								<div
+									class="d-flex justify-content-around d-sm-block d-lg-flex"
+								>
+									<button
+										class="btn btn-outline-secondary col-5 col-sm-12 mx-sm-auto mb-sm-2 col-lg-5 mb-lg-0"
+										type="button"
+										aria-label="Ouvrir modale Lost boys"
+										data-bs-toggle="modal"
+										data-bs-target="#modale_lost-boys"
+									>
+										En savoir plus
+									</button>
+									<button
+										class="btn_ajouter_panier btn btn-danger col-5 col-sm-12 mx-sm-auto col-lg-5 ms-lg-0"
+										type="button"
+										aria-label="Ajouter au panier"
+										data-titre="The Lost Boys"
+										data-modele="Style 47 creeper"
+										data-prix="120.00"
+										data-img="./assets/images/vans_lost-boys.webp"
+									>
+										Ajouter au panier
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-4">
+						<div class="card mb-5 border-secondary">
+							<img
+								class="card-img-top p-2"
+								src="./assets/images/vans_lowland.webp"
+								alt="Soulier thématique It"
+							/>
+							<div class="card-body text-start">
+								<h3 class="card-title">It</h3>
+								<p class="card-text">Lowland CC</p>
+								<p class="fw-bold">$110.00</p>
+								<div
+									class="d-flex justify-content-around d-sm-block d-lg-flex"
+								>
+									<button
+										class="btn btn-outline-secondary col-5 col-sm-12 mx-sm-auto mb-sm-2 col-lg-5 mb-lg-0"
+										type="button"
+										aria-label="Ouvrir modale it soulier"
+										data-bs-toggle="modal"
+										data-bs-target="#modale_it"
+									>
+										En savoir plus
+									</button>
+									<button
+										class="btn_ajouter_panier btn btn-danger col-5 col-sm-12 mx-sm-auto col-lg-5 ms-lg-0"
+										type="button"
+										aria-label="Ajouter au panier"
+										data-titre="It"
+										data-modele="Lowland CC"
+										data-prix="110.00"
+										data-img="./assets/images/vans_lowland.webp"
+									>
+										Ajouter au panier
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-4">
+						<div class="card mb-5 border-secondary">
+							<img
+								class="card-img-top p-2"
+								src="./assets/images/vans_shinning.webp"
+								alt="Soulier vans thématique Shinning"
+							/>
+							<div class="card-body text-start">
+								<h3 class="card-title">The Shinning</h3>
+								<p class="card-text">Classic Sk8-HI</p>
+								<p class="fw-bold">$120.00</p>
+								<div
+									class="d-flex justify-content-around d-sm-block d-lg-flex"
+								>
+									<button
+										class="btn btn-outline-secondary col-5 col-sm-12 mx-sm-auto mb-sm-2 col-lg-5 mb-lg-0"
+										type="button"
+										aria-label="Ouvrir modale Shinning"
+										data-bs-toggle="modal"
+										data-bs-target="#modale_shinning"
+									>
+										En savoir plus
+									</button>
+									<button
+										class="btn_ajouter_panier btn btn-danger col-5 col-sm-12 mx-sm-auto col-lg-5 ms-lg-0"
+										type="button"
+										aria-label="Ajouter au panier"
+										data-titre="The Shinning"
+										data-modele="Classic Sk8-HI"
+										data-prix="120.00"
+										data-img="./assets/images/vans_shinning.webp"
+									>
+										Ajouter au panier
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- LISTE -->
+			<div class="container" id="liste" style="display: none">
+				<div class="row">
+					<table class="table align-middle text-center">
+						<thead>
+							<tr>
+								<th scope="col">Image</th>
+								<th scope="col">Titre</th>
+								<th scope="col">Modèle</th>
+								<th scope="col">Prix</th>
+								<th scope="col">Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="produit">
+								<td>
+									<img
+										class="img-fluid"
+										src="./assets/images/vans_beetlejuice_aut.webp"
+										alt="Vans Beetlejuice"
+										width="200"
+									/>
+								</td>
+								<td>Beetlejuice</td>
+								<td>Old Skool</td>
+								<td class="fw-bold">$160.00</td>
+								<td>
+									<button
+										class="btn btn-secondary my-2"
+										type="button"
+										aria-label="Ouvrir modale Beetlejuice"
+										data-bs-dismiss="modal"
+										data-bs-toggle="modal"
+										data-bs-target="#modale_beetlejuice"
+									>
+										<!-- Information -->
+										<i class="bi bi-info-circle"></i>
+									</button>
+									<button
+										class="btn_ajouter_panier btn btn-danger my-2 ajouter_panier"
+										type="button"
+										aria-label="Ajouter au panier"
+										data-titre="Beetlejuice"
+										data-modele="Old Skool"
+										data-prix="160.00"
+										data-img="./assets/images/vans_beetlejuice_aut.webp"
+									>
+										<!-- Panier ajouter -->
+										<i class="bi bi-cart-plus"></i>
+									</button>
+								</td>
+							</tr>
+							<tr class="produit">
+								<td>
+									<img
+										class="img-fluid"
+										src="./assets/images/vans_casquette.webp"
+										alt="Casquette Vans it"
+										width="200"
+									/>
+								</td>
+								<td>Casquette It</td>
+								<td>Jocker Hat</td>
+								<td class="fw-bold">$40.00</td>
+								<td>
+									<button
+										class="btn btn-secondary my-2"
+										type="button"
+										aria-label="Ouvrir modale Casquette it"
+										data-bs-dismiss="modal"
+										data-bs-toggle="modal"
+										data-bs-target="#modale_casquette"
+									>
+										<!-- Information -->
+										<i class="bi bi-info-circle"></i>
+									</button>
+									<button
+										class="btn_ajouter_panier btn btn-danger my-2 ajouter_panier"
+										type="button"
+										aria-label="Ajouter au panier"
+										data-titre="It"
+										data-modele="Jockey Hat"
+										data-prix="40.00"
+										data-img="./assets/images/vans_casquette.webp"
+									>
+										<!-- Panier + -->
+										<i class="bi bi-cart-plus"></i>
+									</button>
+								</td>
+							</tr>
+							<tr class="produit">
+								<td>
+									<img
+										class="img-fluid"
+										src="./assets/images/vans_gremlin.webp"
+										alt="Vans Gremlins"
+										width="200"
+									/>
+								</td>
+								<td>Gremlins</td>
+								<td>Slip-on</td>
+								<td class="fw-bold">$120.00</td>
+								<td>
+									<button
+										class="btn btn-secondary my-2"
+										type="button"
+										aria-label="Ouvrir modale Gremlins"
+										data-bs-dismiss="modal"
+										data-bs-toggle="modal"
+										data-bs-target="#modale_gremlins"
+									>
+										<!-- Information -->
+										<i class="bi bi-info-circle"></i>
+									</button>
+									<button
+										class="btn_ajouter_panier btn btn-danger my-2 ajouter_panier"
+										type="button"
+										aria-label="Ajouter au panier"
+										data-titre="Gremlins"
+										data-modele="Slip-on"
+										data-prix="120.00"
+										data-img="./assets/images/vans_gremlin.webp"
+									>
+										<!-- Panier + -->
+										<i class="bi bi-cart-plus"></i>
+									</button>
+								</td>
+							</tr>
+							<tr class="produit">
+								<td>
+									<img
+										class="img-fluid"
+										src="./assets/images/vans_lost-boys.webp"
+										alt="Vans The Lost Boys"
+										width="200"
+									/>
+								</td>
+								<td>The Lost Boys</td>
+								<td>Style 47 creeper</td>
+								<td class="fw-bold">$120.00</td>
+								<td>
+									<button
+										class="btn btn-secondary my-2"
+										type="button"
+										aria-label="Ouvrir modale lost boys"
+										data-bs-dismiss="modal"
+										data-bs-toggle="modal"
+										data-bs-target="#modale_lost-boys"
+									>
+										<!-- Information -->
+										<i class="bi bi-info-circle"></i>
+									</button>
+									<button
+										class="btn_ajouter_panier btn btn-danger my-2 ajouter_panier"
+										type="button"
+										aria-label="Ajouter au panier"
+										data-titre="The Lost Boys"
+										data-modele="Style 47 creeper"
+										data-prix="120.00"
+										data-img="./assets/images/vans_lost-boys.webp"
+									>
+										<!-- Panier + -->
+										<i class="bi bi-cart-plus"></i>
+									</button>
+								</td>
+							</tr>
+							<tr class="produit">
+								<td>
+									<img
+										class="img-fluid"
+										src="./assets/images/vans_lowland.webp"
+										alt="Vans it"
+										width="200"
+									/>
+								</td>
+								<td>It</td>
+								<td>Lowland CC</td>
+								<td class="fw-bold">$110.00</td>
+								<td>
+									<button
+										class="btn btn-secondary my-2"
+										type="button"
+										aria-label="Ouvrir modale it soulier"
+										data-bs-dismiss="modal"
+										data-bs-toggle="modal"
+										data-bs-target="#modale_it"
+									>
+										<!-- Information -->
+										<i class="bi bi-info-circle"></i>
+									</button>
+									<button
+										class="btn_ajouter_panier btn btn-danger my-2 ajouter_panier"
+										type="button"
+										aria-label="Ajouter au panier"
+										data-titre="It"
+										data-modele="Lowland CC"
+										data-prix="110.00"
+										data-img="./assets/images/vans_lowland.webp"
+									>
+										<!-- Panier + -->
+										<i class="bi bi-cart-plus"></i>
+									</button>
+								</td>
+							</tr>
+							<tr class="produit">
+								<td>
+									<img
+										class="img-fluid"
+										src="./assets/images/vans_shinning.webp"
+										alt="Vans The Shinning"
+										width="200"
+									/>
+								</td>
+								<td>The Shinning</td>
+								<td>Classic Sk8-HI</td>
+								<td class="fw-bold">$120.00</td>
+								<td>
+									<button
+										class="btn btn-secondary my-2"
+										type="button"
+										aria-label="Ouvrir modale Shinning"
+										data-bs-dismiss="modal"
+										data-bs-toggle="modal"
+										data-bs-target="#modale_shinning"
+									>
+										<!-- Information -->
+										<i class="bi bi-info-circle"></i>
+									</button>
+									<button
+										class="btn_ajouter_panier btn btn-danger my-2 ajouter_panier"
+										type="button"
+										aria-label="Ajouter au panier"
+										data-titre="The Shinning"
+										data-modele="Classic Sk8-HI"
+										data-prix="120.00"
+										data-img="./assets/images/vans_shinning.webp"
+									>
+										<!-- Panier + -->
+										<i class="bi bi-cart-plus"></i>
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<!-- LES MODALES -->
+
+			<div
+				class="modal fade"
+				id="modale_beetlejuice"
+				tabindex="-1"
+				aria-labelledby="Beetlejuice"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h2 class="modal-title" id="Beetlejuice">
+								Old skool
+							</h2>
+							<button
+								aria-label="Fermer modale"
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+							></button>
+						</div>
+						<div class="modal-body">
+							<img
+								src="./assets/images/vans_beetlejuice_aut.webp"
+								class="card-img-top"
+								alt=""
+							/>
+							<h3 class="text-uppercase">Beetlejuice</h3>
+							<p class="lead">
+								Revivez les plus grands moments de nos films
+								d’horreur favoris avec les modèles Vans x
+								Horror.
+							</p>
+							<p class="lead">
+								Représentant des personnages et scènes de deux
+								films cultes, Beetlejuice et Gremlins, cette
+								collection ranime le souvenir de ces histoires
+								étranges grâce à des motifs drôlement macabres
+								que vous ne verrez nulle part ailleurs.
+							</p>
+							<ul class="lead">
+								<li>
+									Collection Van X Warner Bros. Entertainement
+									Vans X Horror
+								</li>
+								<li>
+									Design brodé inspiré du film Beetlejuice
+								</li>
+								<li>Modèle : Old Skool</li>
+							</ul>
+
+							<p class="fw-bold">
+								Livrées gratuitement en trois à quatre semaines.
+							</p>
+							<p class="prix_produit fw-bold">$160.00</p>
+						</div>
+						<div class="modal-footer">
+							<button
+								class="btn_ajouter_panier btn btn-danger ajouter_panier"
+								type="button"
+								aria-label="Ajouter au panier"
+								data-titre="Beetlejuice"
+								data-modele="Old Skool"
+								data-prix="160.00"
+								data-img="./assets/images/vans_beetlejuice_aut.webp"
+							>
+								Ajouter au panier
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				class="modal fade"
+				id="modale_casquette"
+				tabindex="-1"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h2 class="modal-title" id="Casquette_it">
+								Jockey Hat
+							</h2>
+							<button
+								class="btn-close"
+								type="button"
+								aria-label="Fermer modale"
+								data-bs-dismiss="modal"
+							></button>
+						</div>
+						<div class="modal-body">
+							<img
+								src="./assets/images/vans_modale_casquette.webp"
+								class="card-img-top"
+								alt="Soulier vans beetlejuice"
+							/>
+							<h3 class="text-uppercase">It</h3>
+							<p class="lead">
+								Revivez les moments les plus épeurants de nos
+								films d’horreur favoris avec la collection Vans
+								x Horror Illustrant des scènes de vos thrillers
+								préférés de Warner Bros, cette collection à
+								donner la chair de poule donne vie à ces
+								histoires grâce à des interprétations originales
+								et directes des scènes les plus effrayantes, des
+								affiches célèbres et de la distribution de ces
+								films. Arborant un tissu jaune vif avec un
+								ballon rouge brodé à l’avant, la casquette de
+								style jockey Vans x It vous envoûtera avec
+								l’image séduisante d’un souvenir d’enfance...
+								mais n’approchez pas trop près. Le Clown dansant
+								attend juste sous la palette. Cette casquette de
+								style jockey à six panneaux comprend aussi des
+								logos sur le côté et à l'arrière et un fermoir
+								ajustable.
+							</p>
+							<ul class="lead">
+								<li>
+									Collection Vans x Warner Bros. Entertainment
+									Vans X Horror
+								</li>
+								<li>Design brodé inspiré du film It</li>
+								<li>100 % coton</li>
+								<li>Fermoir ajustable</li>
+							</ul>
+							<p class="fw-bold">
+								Livrées gratuitement en deux à trois semaines.
+							</p>
+							<p class="prix_produit fw-bold">$40.00</p>
+						</div>
+						<div class="modal-footer">
+							<button
+								class="btn_ajouter_panier btn btn-danger ajouter_panier"
+								type="button"
+								aria-label="Ajouter au panier"
+								data-titre="It"
+								data-modele="Jockey Hat"
+								data-prix="40.00"
+								data-img="./assets/images/vans_casquette.webp"
+							>
+								Ajouter au panier
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				class="modal fade"
+				id="modale_gremlins"
+				tabindex="-1"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h2 class="modal-title" id="gremlins">Slip-on</h2>
+							<button
+								class="btn-close"
+								type="button"
+								aria-label="Fermer modale"
+								data-bs-dismiss="modal"
+							></button>
+						</div>
+						<div class="modal-body">
+							<img
+								src="./assets/images/vans_gremlin.webp"
+								class="card-img-top"
+								alt="Soulier vans Gremlins"
+							/>
+							<h3 class="text-uppercase">Gremlins</h3>
+							<p class="lead">
+								Revivez les plus grands moments de nos films
+								d’horreur favoris avec les modèles Customs Vans
+								x Horror. Représentant des personnages et scènes
+								de deux films cultes, Beetlejuice et Gremlins,
+								cette collection ranime le souvenir de ces
+								histoires étranges grâce à des motifs drôlement
+								macabres que vous ne verrez nulle part ailleurs.
+							</p>
+							<ul class="lead">
+								<li>
+									Collection Van X Warner Bros. Entertainement
+									Vans X Horror
+								</li>
+								<li>Design brodé inspiré du film Gremlins</li>
+								<li>Modèle : Slip-on</li>
+							</ul>
+							<p class="fw-bold">
+								Livrées gratuitement en deux à trois semaines.
+							</p>
+							<p class="prix_produit fw-bold">$120.00</p>
+						</div>
+						<div class="modal-footer">
+							<button
+								class="btn_ajouter_panier btn btn-danger ajouter_panier"
+								type="button"
+								aria-label="Ajouter au panier"
+								data-titre="Gremlins"
+								data-modele="Slip-on"
+								data-prix="120.00"
+								data-img="./assets/images/vans_gremlin.webp"
+							>
+								Ajouter au panier
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				class="modal fade"
+				id="modale_lost-boys"
+				tabindex="-1"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h2 class="modal-title" id="lost-boys">
+								Style 47 creeper
+							</h2>
+							<button
+								class="btn-close"
+								type="button"
+								aria-label="Fermer modale"
+								data-bs-dismiss="modal"
+							></button>
+						</div>
+						<div class="modal-body">
+							<img
+								src="./assets/images/vans_modale_lost.webp"
+								class="card-img-top"
+								alt="Soulier Lost Boys"
+							/>
+							<h3 class="text-uppercase">The Lost boys</h3>
+							<p class="lead">
+								Revivez les moments les plus épeurants de nos
+								films d’horreur favoris avec la collection Vans
+								x Horror Illustrant des scènes de vos thrillers
+								préférés de Warner Bros, cette collection à
+								donner la chair de poule donne vie à ces
+								histoires grâce à des interprétations originales
+								et directes des scènes les plus effrayantes, des
+								affiches célèbres et de la distribution de ces
+								films. Arborant un style classique de chaussure
+								« creeper » inspiré de nos vampires punks
+								favoris, le Vans x The Lost Boys Style 47
+								Creeper vous transportera tout droit dans le
+								Santa Carla des années 1980... Mais prenez garde
+								de ne pas frayer avec le mauvais groupe! Vous
+								pourriez être pris pour l’éternité. Ce soulier
+								de style « creeper » comprend aussi une tige en
+								cuir à boucle décorative, un bracelet matelassé
+								pour le soutien et notre semelle signature
+								Waffle en caoutchouc.
+							</p>
+							<ul class="lead">
+								<li>
+									Collection Vans x Warner Bros. Entertainment
+									Vans x Horror
+								</li>
+								<li>Imprimés inspirés de The Lost Boys</li>
+								<li>Tige robuste en cuir</li>
+								<li>Boucle décorative</li>
+								<li>Bracelet matelassé pour le soutien</li>
+								<li>Flancs gaufrés</li>
+								<li>
+									Semelle signature Waffle à plateforme en
+									caoutchouc
+								</li>
+							</ul>
+							<p class="fw-bold">
+								Livrées gratuitement en deux à trois semaines.
+							</p>
+							<p class="prix_produit fw-bold">$120.00</p>
+						</div>
+						<div class="modal-footer">
+							<button
+								class="btn_ajouter_panier btn btn-danger ajouter_panier"
+								type="button"
+								aria-label="Ajouter au panier"
+								data-titre="The Lost Boys"
+								data-modele="Style 47 creeper"
+								data-prix="120.00"
+								data-img="./assets/images/vans_lost-boys.webp"
+							>
+								Ajouter au panier
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				class="modal fade"
+				id="modale_it"
+				tabindex="-1"
+				aria-labelledby="it"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h2 class="modal-title" id="it">Lowland CC</h2>
+							<button
+								class="btn-close"
+								type="button"
+								aria-label="Fermer modale"
+								data-bs-dismiss="modal"
+							></button>
+						</div>
+						<div class="modal-body">
+							<img
+								src="./assets/images/vans_modale_it.jfif"
+								class="card-img-top"
+								alt=""
+							/>
+							<h3 class="text-uppercase">It</h3>
+							<p class="lead">
+								Revivez les moments les plus épeurants de nos
+								films d’horreur favoris avec la collection Vans
+								x Horror Illustrant des scènes de vos thrillers
+								préférés de Warner Bros, cette collection à
+								donner la chair de poule donne vie à ces
+								histoires grâce à des interprétations originales
+								et directes des scènes les plus effrayantes, des
+								affiches célèbres et de la distribution de ces
+								films. Arborant un imprimé inspiré par le clown
+								Grippe-Sou tiré du film It, le Vans x It Lowland
+								CC vous envoûtera avec une promesse
+								alléchante... Mais n’approchez pas trop près! Le
+								Clown dansant vous attend. Cette emblématique
+								chaussure lacée comporte aussi le logo rétro «
+								Flying V » de Vans, une élégante étiquette sur
+								la languette, un bracelet matelassé pour le
+								soutien et une tige en cuir et matériaux
+								synthétiques.
+							</p>
+							<ul class="lead">
+								<li>
+									Collection Vans x Warner Bros. Entertainment
+									Vans X Horror
+								</li>
+								<li>Imprimé inspiré du film It</li>
+								<li>
+									Tige robuste en cuir et matériaux
+									synthétiques
+								</li>
+								<li>Logo rétro Flying V de Vans</li>
+								<li>Bracelet rembourré pour le soutien</li>
+							</ul>
+							<p class="fw-bold">
+								Livrées gratuitement en deux à trois semaines.
+							</p>
+							<p class="prix_produit fw-bold">$110.00</p>
+						</div>
+						<div class="modal-footer">
+							<button
+								class="btn_ajouter_panier btn btn-danger ajouter_panier"
+								type="button"
+								aria-label="Ajouter au panier"
+								data-titre="It"
+								data-modele="Lowland CC"
+								data-prix="110.00"
+								data-img="./assets/images/vans_lowland.webp"
+							>
+								Ajouter au panier
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				class="modal fade"
+				id="modale_shinning"
+				tabindex="-1"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h2 class="modal-title" id="shinning">
+								Classic Sk8-HI
+							</h2>
+							<button
+								class="btn-close"
+								type="button"
+								aria-label="Fermer modale"
+								data-bs-dismiss="modal"
+							></button>
+						</div>
+						<div class="modal-body">
+							<img
+								src="./assets/images/vans_modale_shinning.webp"
+								class="card-img-top"
+								alt=""
+							/>
+							<h3>The Shinning</h3>
+							<p class="lead">
+								Revivez les moments les plus épeurants de nos
+								films d’horreur favoris avec la collection Vans
+								x Horror Illustrant des scènes de vos thrillers
+								préférés de Warner Bros, cette collection à
+								donner la chair de poule donne vie à ces
+								histoires grâce à des interprétations originales
+								et directes des scènes les plus effrayantes, des
+								affiches célèbres et de la distribution de ces
+								films. Arborant une toile en suède et en toile
+								ornée de détails inspirés du film The Shining,
+								le Vans x The Shining Sk8-Hi hantera vos
+								moindres pas... et prenez garde à ce que
+								chuchotent les flancs. Ce légendaire modèle à
+								tige haute comporte aussi des bouts à renfort,
+								un bracelet matelassé pour le soutien et notre
+								semelle signature Waffle en caoutchouc.
+							</p>
+							<ul class="lead">
+								<li>
+									Collection Vans x Warner Bros. Entertainment
+									Vans x Horror
+								</li>
+								<li>Imprimés inspirés de The Shining</li>
+								<li>Tige robuste en suède et en toile</li>
+								<li>Bouts à renfort</li>
+								<li>Bracelet matelassé pour le soutien</li>
+								<li>Semelle signature Waffle en caoutchouc</li>
+							</ul>
+							<p class="fw-bold">
+								Livrées gratuitement en deux à trois semaines.
+							</p>
+							<p class="prix_produit fw-bold">$120.00</p>
+						</div>
+						<div class="modal-footer">
+							<button
+								class="btn_ajouter_panier btn btn-danger ajouter_panier"
+								type="button"
+								aria-label="Ajouter au panier"
+								data-titre="The Shinning"
+								data-modele="Classic Sk8-HI"
+								data-prix="120.00"
+								data-img="./assets/images/vans_shinning.webp"
+							>
+								Ajouter au panier
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer class="container-fluid bg-dark text-center p-3">
+			<div id="wrapper_footer" class="d-lg-flex justify-content-around">
+				<a
+					class="link link-danger btn m-2 my-3 order-2"
+					href="#top"
+					aria-label="Retour en haut de la page"
+				>
+					<i class="bi bi-arrow-up h1"></i>
+				</a>
+				<ul
+					id="media"
+					class="list-unstyled d-flex justify-content-center mx-lg-0 my-3 order-3"
+				>
+					<li>
+						<a
+							class="link link-light h2 m-1 px-2"
+							href="#"
+							aria-label="Aller vers facebook"
+						>
+							<i class="bi bi-facebook"></i>
+						</a>
+					</li>
+					<li>
+						<a
+							class="link link-light h2 m-1 px-2"
+							href="#"
+							aria-label="Aller vers Twitter"
+						>
+							<i class="bi bi-twitter"></i>
+						</a>
+					</li>
+					<li>
+						<a
+							class="link link-light h2 m-1 px-2"
+							href="#"
+							aria-label="Aller vers instagram"
+						>
+							<i class="bi bi-instagram"></i>
+						</a>
+					</li>
+					<li>
+						<a
+							class="link link-light h2 m-1 px-2"
+							href="#"
+							aria-label="Aller vers Youtube"
+						>
+							<i class="bi bi-youtube"></i>
+						</a>
+					</li>
+				</ul>
+				<img
+					class="my-3 order-1"
+					src="./assets/images/vans_logo_blanc.svg"
+					alt="Logo vans blanc"
+				/>
+			</div>
+			<p class="text-light my-3 pb-2">
+				Droit d'auteur © 2021 Élisabeth Desjardins.
+			</p>
+		</footer>
+
+		<script src="https://unpkg.com/vue@next"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+			crossorigin="anonymous"
+		></script>
+		<script src="./assets/scripts/index.js"></script>
+	</body>
+</html>

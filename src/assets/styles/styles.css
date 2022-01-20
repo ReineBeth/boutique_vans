@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+:root {
+	--danger : #dc3545;
+	--light : #f8f9fa;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+}
+
+#icone_logo button:hover {
+	border-color: var(--danger);
+}
+
+#icones_loupe-panier a:hover {
+	color: var(--danger);
+}
+
+#menuBurger a:hover {
+	color: var(--danger);
+	text-decoration: underline;
+}
+
+#btn_offcanvas:hover,
+.btn_ajouter_panier:hover {
+	color: var(--danger);
+	background: var(--light);
+	outline: var(--danger);
+}
+
+#contenu_panier .btn-close:hover {
+	outline: 1px solid var(--danger);
+}
+
+#wrapper_footer .link-danger:hover {
+	color: var(--light);
+	outline: 1px solid var(--light);
+}
+
+#wrapper_footer .link-light:hover {
+	color: var(--danger);
+	outline: 1px solid var(--danger);
+}
